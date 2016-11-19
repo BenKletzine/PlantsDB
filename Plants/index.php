@@ -23,7 +23,7 @@
 <!-- == Content Section          == -->
 <!-- ============================== -->
 
-<?php include('Layouts/contentStart.php')?>
+<?php include('Layouts/contentStartIndex.php')?>
 
 
 <!-- Our Content Goes Here -->

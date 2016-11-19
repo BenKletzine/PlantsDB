@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -8,7 +8,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="Matt Springer, Ben Kletzine, Jeff Berger">
 
-    <title>PlantDB - Plant Search</title>
+    <title>PlantDB - Settings</title>
 
     <!-- Styles -->
     <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
@@ -24,13 +24,11 @@
         <!-- ============================== -->
 
         <?php include('../Layouts/contentStart.php')?>
-
-
-        <!-- Our Content Goes Here -->
-        <h1 class="page-header">Plant Search</h1>
-        <p>This will contain a tool that searches the database and pulls up plant information</p>
-
-
+         <p>&nbsp;</p>
+        <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
+        <h2>Settings</h2>
+        <input type="button" value="Change Password"/>
+        <input type="button" value="Change Profile Picture"/>
         <?php include('../Layouts/contentEnd.php')?>
 
 

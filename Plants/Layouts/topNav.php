@@ -46,9 +46,9 @@ echo
                         <li>
                             <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>About <span class='caret'></span></a>
                             <ul class='dropdown-menu'>
-                                <li><a href='http://plants.usda.gov/about_plants.html'>Our Database</a></li>
-                                <li><a href='http://plants.usda.gov/java/citePlants'>Citations</a></li>
-                                <li><a href='http://plants.usda.gov/help.html'>Help</a></li>
+                                <li><a href='../About/ourDatabase.php'>Our Database</a></li>
+                                <li><a href='../About/citations.php'>Citations</a></li>
+                                <li><a href='../About/help.php'>Help</a></li>
                                 <li role='separator' class='divider'></li>
                                 <li class='dropdown-header'>Social</li>
                                 <li><a href='http://plants.usda.gov/team.html'>Our Team</a></li>
