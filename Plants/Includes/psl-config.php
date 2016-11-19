@@ -1,14 +1,11 @@
 <?php
-/**
- * These are the database login details
- */
-define("HOST", "localhost");     // The host you want to connect to.
-define("USER", "bergej88");    // The database username.
-define("PASSWORD", "plantDatabase");    // The database password.
-define("DATABASE", "bergej88");    // The database name.
+  //database login details
+  define("DSN", "mysql:dbname=bergej88;host=localhost");
+  define("USER", "bergej88");
+  define("PASSWORD", "plantDatabase");
 
-define("CAN_REGISTER", "any");
-define("DEFAULT_ROLE", "member");
 
-define("SECURE", FALSE);    // FOR DEVELOPMENT ONLY!!!!
+  define("CAN_REGISTER", "any");
+  define("DEFAULT_ROLE", "member");
+  define("SECURE", FALSE);    // FOR DEVELOPMENT ONLY!!!!
 ?>
