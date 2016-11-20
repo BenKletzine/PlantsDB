@@ -2,9 +2,9 @@
 include_once 'Includes/db_connect.php';
 include_once 'Includes/loginFunctions.php';
 
-sec_session_start();
+startSecureSession();
 
-if (login_check($mysqli) == true) {
+if (login_check($db) == true) {
     $logged = 'in';
 } else {
     $logged = 'out';
@@ -39,8 +39,6 @@ if (login_check($mysqli) == true) {
 
     <?php include('Layouts/contentStart.php')?>
 
-    <h1 class="page-header">Login</h1>
-
     <?php
     if (isset($_GET['error'])) {
         echo '<p class="error">Error Logging In!</p>';
@@ -57,7 +55,7 @@ if (login_check($mysqli) == true) {
     </form>
 
     <?php
-            if (login_check($mysqli) == true) {
+            if (login_check($db) == true) {
                             echo '<p>Currently logged ' . $logged . ' as ' . htmlentities($_SESSION['username']) . '.</p>';
 
                 echo '<p>Do you want to change user? <a href="Includes/logout.php">Log out</a>.</p>';
@@ -67,7 +65,7 @@ if (login_check($mysqli) == true) {
                     }
     ?>
 
-    <?php include('Layouts/contentEndIndex.php')?>
+    <?php include('Layouts/contentEnd.php')?>
     <!-- ============================== -->
     <!-- == Script Section           == -->
     <!-- ============================== -->
