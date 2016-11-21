@@ -5,6 +5,8 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
+    height: 100%;
+    margin-bottom: 50px;
 }
 
 
@@ -148,4 +150,21 @@ body {
 .discreteLink:hover{
     color: black;
     text-decoration: none;
+}
+
+.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    clear:both;
+    height: 40px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #428bca;
+    z-index: 9000;
+    padding-top: 10px;
+    text-align: center;
+ }
+
+.strikeOut {
+    text-decoration: line-through;
 }

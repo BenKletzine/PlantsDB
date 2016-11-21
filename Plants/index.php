@@ -32,9 +32,10 @@
 <h3>First Check-In</h3>
 <div id="tabs">
     <ul>
-        <li><a href="#tabs-1">Checklist</a></li>
+        <li><a href="#tabs-1">Broad Checklist</a></li>
         <li><a href="#tabs-2">DB Diagram</a></li>
         <li><a href="#tabs-3">Feature Creep</a></li>
+        <li><a href="#tabs-4">DB Check-in</a></li>
     </ul>
     <div id="tabs-1">
         <p>Checklist: </p>
@@ -48,11 +49,11 @@
             <tbody>
                 <tr>
                     <td>Jeff</td>
-                    <td>Stored Procedures (plant search, plant by state, all inserts, updates, archives, login/registration)</td>
+                    <td class="strikeOut">Stored Procedures (plant search, plant by state, all inserts, updates, archives, login/registration)</td>
                 </tr>
                 <tr>
                     <td>Jeff</td>
-                    <td>Cleaning up the data in the plants table from the CSV (still 30,000+ records)</td>
+                    <td class="strikeOut">Cleaning up the data in the plants table from the CSV (still 30,000+ records)</td>
                 </tr>
                 <tr>
                     <td>Jeff</td>
@@ -80,7 +81,19 @@
                 </tr>
                 <tr>
                     <td>Jeff</td>
-                    <td>Custom Tool: Plants by State > Interactive US Map with dynamic table of plants by state</td>
+                    <td class="strikeOut">Custom Tool: Plants by State > Implement the interactive map</td>
+                </tr>
+                <tr>
+                    <td>Jeff</td>
+                    <td class="strikeOut">Custom Tool: Plants by State > Write procedures to back the map with data</td>
+                </tr>
+                <tr>
+                    <td>Jeff</td>
+                    <td>Custom Tool: Plants by State > Hook the map up to pull data back</td>
+                </tr>
+                <tr>
+                    <td>Jeff</td>
+                    <td>Custom Tool: Plants by State > Implement a table system to show the data</td>
                 </tr>
                 <tr>
                     <td>Matt</td>
@@ -116,13 +129,91 @@
             <li>There was a notification system?</li>
         </ul>
     </div>
+    <div id="tabs-4">
+        <p>Stored Procedure Progress (Implemented): </p>
+        <pre>
+            <code>
+                // ============================================= //
+                // ==         Stored Procedure Index          == //
+                // ============================================= //
+                // Select Methods:
+                //  + GetAllStates()
+                //  + GetAllPlants()
+                //  + GetAllSeasons()
+                //  + GetUserGardens($userid)
+                //  + SearchPlants($searchText)
+                //  + GetGardenPlants($gardenid)
+                // Insert Methods:
+                //  + InsertPlant($symbol, $synonym, $sciName, $comNam, $family)
+                //  + InsertSeason($name)
+                //  + InsertUser($pw, $username, $firstname, $lastname, $email, $stateid, $dob)
+                //  + InsertGarden($userid, $length, $width, $seasonid, $name, $description)
+                //  + InsertGardenPlant($gardenid, $plantid, $planteddate, $numberplanted, $numbersurvived, $tallest, $shortest)
+                //  + InsertLoginAttempt($userid)
+                //  + InsertPlantSeen($userid, $plantid, $stateid)
+                //  + InsertPlantState($plantid, $stateid)
+            </code>
+        </pre>
+        <p>A DB Class/Storage Class system was implemented:</p>
+        <pre>
+            <code>
+                // Storage Class Example
+                class Plant
+                {
+                    public $PlantId;
+                    public $Symbol;
+                    public $Synonym;
+                    public $ScientificName;
+                    public $CommonName;
+                    public $Family;
+
+                    public function  __construct($id, $symbol, $synonym, $sciName, $commName, $family) {
+                        $this->PlantId = $id;
+                        $this->Symbol = $symbol;
+                        $this->Synonym = $synonym;
+                        $this->ScientificName = $sciName;
+                        $this->CommonName = $commName;
+                        $this->Family = $family;
+                    }
+                }
+
+                // Stored Procedure Example
+                /**
+                 * GetAllPlants()
+                 * @return - An array of plant objects containing all of the plants from the DB
+                */
+                public function GetAllPlants() {
+                    // Step 1: Prep the query
+                    $this->query = $this->db->prepare('call pdb_GetAllPlants();');
+                    // Step 2: Prep the return
+                    $plantArray = array();
+                    // Step 3: Build the return
+                    if ($this->query->execute()) {
+                        while ($row = $this->query->fetch()) {
+                            $plant = new Plant(
+                                $row["Id"],
+                                $row["Symbol"],
+                                $row["Synonym"],
+                                $row["ScientificName"],
+                                $row["CommonName"],
+                                $row["Family"]
+                            );
+                            array_push($plantArray, $plant);
+                        }
+                    }
+                    // Step 4: Return the values
+                    return json_encode($plantArray);
+                }
+
+                // The stored procedures live within PhpMyAdmin, prefixed by pdb_ProcedureName
+            </code>
+        </pre>
+    </div>
 </div>
 
 
 
-<?php include('Layouts/contentEnd.php')?>
-
-
+<?php include('Layouts/contentEndIndex.php')?>
 
 <!-- ============================== -->
 <!-- == Script Section           == -->
@@ -135,55 +226,6 @@
 <script src="Content/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="js/index.js"></script>
 
-<!-- FROM THE OLD INDEX.HTML
-		<div>
-			<div>
-				<h1>PLANTS</h1>
-			</div>
-			<div>
-				<div>
-					<a href=""><span class="navContainer">Thing1</span></a>
-					<a href=""><span class="navContainer">Thing2</span></a>
-					<a href="MyGarden/addplant.php"><span class="navContainer">Thing3</span></a>
-					<a href=""><span class="navContainer">Register</span></a>
-					<a href="Login/login.php"><span class="navContainer">Login</span></a>
-				</div>
-			</div>
-		</div>
-		<div id="centralFeatures">
-			<div class="featureSection">
-				<h2>My Garden Overview</h2>
-				<div class="details">
-					<p><span class="bold">Crops Planted:</span> x</p>
-					<p><span class="bold">Yield:</span> y pounds/tons</p>
-				</div>
-			</div>
-			<div class="featureSection">
-				<h2>Recently Spotted</h2>
-				<div class="details">
-					<p><span class="bold">Scientific Name:</span> z</p>
-					<p><span class="bold">Common Name:</span> w</p>
-					<p><span class="bold">Spotted By:</span> v</p>
-					<a><img/></a>
-				</div>
-			</div>
-		</div>
-    <div id="sideNav">
-      <ul>
-        <li><input id="searchText" type="text" name="searchTextField"></li>
-        <li><input id="searchType" type="select" name="searchSelectType"><input id="searchSubmit" type="button"></li>
-        <li><a>State Search</a></li>
-        <li><a>Advanced Search</a></li>
-        <li><a>Search Help</a></li>
-      </ul>
-    </div>
-
-		<div>
-			<p>
-				<a href="http://validator.w3.org/check/referer">Validate Me</a>
-			</p>
-		</div>
--->
 
 </body>
 </html>
