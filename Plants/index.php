@@ -29,7 +29,7 @@
 <!-- Our Content Goes Here -->
 <h1 class="page-header">Home - News &amp; Updates</h1>
 
-<h3>First Check-In</h3>
+<h3>Second Check-In</h3>
 <div id="tabs">
     <ul>
         <li><a href="#tabs-1">Broad Checklist</a></li>
@@ -114,6 +114,42 @@
                 <tr>
                     <td>All</td>
                     <td>Convert the static layouts to dynamic content using jquery/bootstrap</td>
+                </tr>
+                <tr>
+                    <td>Jeff</td>
+                    <td>Contact Page</td>
+                </tr>
+                <tr>
+                    <td>Jeff</td>
+                    <td>Tools > Documentation Page</td>
+                </tr>
+                <tr>
+                    <td>Jeff</td>
+                    <td>Tools >Cultural Plants Page</td>
+                </tr>
+                <tr>
+                    <td>Jeff</td>
+                    <td>Tools >Hardiness Zones</td>
+                </tr>
+                <tr>
+                    <td>Ben</td>
+                    <td>About > Our Team Page</td>
+                </tr>
+                <tr>
+                    <td>Ben</td>
+                    <td>About > The NPDT Page</td>
+                </tr>
+                <tr>
+                    <td>Ben</td>
+                    <td>About > Our Partners Page</td>
+                </tr>
+                <tr>
+                    <td>Matt</td>
+                    <td>About > Acknowledgements Page</td>
+                </tr>
+                <tr>
+                    <td>Matt</td>
+                    <td>Tools > Ecological Sites Page</td>
                 </tr>
             </tbody>
         </table>
