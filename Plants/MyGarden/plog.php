@@ -25,7 +25,7 @@
 
         <?php include('../Layouts/contentStart.php')?>
          <p>&nbsp;</p>
-        <p class="headline_bars">Your Garden</p>
+        <p class="headline_bars">Your Plog</p>
         <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
         <h2>Your Name's Plog</h2>
         <div>

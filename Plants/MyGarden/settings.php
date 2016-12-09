@@ -28,7 +28,14 @@
         <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
         <h2>Settings</h2>
         <input type="button" value="Change Password"/>
-        <input type="button" value="Change Profile Picture"/>
+        <div class="margin-topbottom-5px">
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                Select image to upload:
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="submit" value="Upload Image" name="submit">
+                <p>Files should be less than 5MB</p>
+            </form>
+        </div>
         <?php include('../Layouts/contentEnd.php')?>
 
 
