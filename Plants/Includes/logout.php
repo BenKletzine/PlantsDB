@@ -1,6 +1,7 @@
 <?php
+session_start();
 include_once 'loginFunctions.php';
-startSecureSession();
+
 
 // Unset all session values
 $_SESSION = array();

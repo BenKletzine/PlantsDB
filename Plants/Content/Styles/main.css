@@ -161,6 +161,7 @@ body {
     text-decoration: none;
 }
 
+<<<<<<< HEAD
 .footer {
     position: fixed;
     width: 100%;
@@ -194,3 +195,26 @@ body {
 =======
 >>>>>>> origin/PlantsDB-Matt
 }
+=======
+.completed {
+  color: red;
+}
+
+.loginError {
+  margin-top: 10px;
+  color: red;
+}
+
+.hideError{
+  visibility: hidden;
+}
+#loginForm {
+  width: 25%;
+}
+#registerForm {
+  width: 25%;
+}
+.controlWidth {
+    width: 50%;
+}
+>>>>>>> refs/remotes/origin/PlantsDB-Ben
