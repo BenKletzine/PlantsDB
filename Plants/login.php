@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once 'includes/db_connect.php';
-include_once 'includes/loginFunctions.php';
+include_once 'Includes/db_connect.php';
+include_once 'Includes/loginFunctions.php';
 
 if (login_check($db) == true) {
     $logged = 'in';
@@ -39,7 +39,7 @@ if (login_check($db) == true) {
     <?php include('Layouts/contentStart.php');  ?>
     <div id="loginForm">
         <h1>Login</h1>
-        <form action="includes/process_login.php" method="post" name="login_form">
+        <form action="Includes/process_login.php" method="post" name="login_form">
             <div class="form-group ">
                 Email: <input class="form-control" type="text" id="email" name="email" />
             </div>
