@@ -61,7 +61,7 @@ echo
                             </ul>
                         </li>
                         <!-- Contact -->
-                        <li><a href='http://plants.usda.gov/contact.html'>Contact</a></li>
+                        <li><a href='About/Contact.php'>Contact</a></li>
                     </ul>
 
                     <!-- Login -->

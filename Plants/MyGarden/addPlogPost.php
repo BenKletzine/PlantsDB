@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -8,7 +8,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="Matt Springer, Ben Kletzine, Jeff Berger">
 
-    <title>PlantDB - Documentation</title>
+    <title>PlantDB - My Plog</title>
 
     <!-- Styles -->
     <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
@@ -24,37 +24,26 @@
         <!-- ============================== -->
 
         <?php include('../Layouts/contentStart.php')?>
-
-        <h1 class="page-header">Documentation</h1>
-        <p class="well">The following documentation is provided by the Plants site and is open for access to all users. The files are available in pdf format.</p>
-
-        <dl class="dl-horizontal">
-            <dt>Plants</dt>
-            <dd>
-                <a href="../Content/documents/PLANTS_Flyer_1-page.pdf" download="Flyer for the Plants Site">one page flyer (PDF; 176KB)</a>
-            </dd>
-            <dd>
-                <a href="../Content/documents/PLANTS_Flyer_2-page.pdf" download="Flyer for the Plants Site">two page flyer (PDF; 325KB)</a>
-            </dd>
-
-            <dt>NP Data Team:</dt>
-            <dd>
-                <a href="../Content/documents/NPDT_2Page.pdf" download="Flyer for the Plants Team">NPDT two page flyer (PDF; 913KB)</a>
-            </dd>
-            <dd>
-                <a href="../Content/documents/NPDT_3Fold.pdf" download="Flyer for the Plants Team">NPDT three-fold, two page flyer (PDF; 696KB)</a>
-            </dd>
-
-            <dt>Tutorials</dt>
-            <dd>
-                <a href="../Content/documents/plants_tutorial.pdf" download="Plant tutorial">Plants Tutorial (PDF; 575KB)</a>
-            </dd>
-        </dl>
-
-
-
-
-
+         <p>&nbsp;</p>
+        <p class="headline_bars">Your Garden</p>
+        <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
+        <h2>Your Name's Plog</h2>
+        <div>
+            <h3>
+                Your Plog title goes here.
+            </h3>
+            <form action="savePlogPost.php">
+                <label for="Title" class="displayBlock">Title</label>
+                <input id="plogInputTitle" type="text" name="Title" placeholder="Post Title"/>
+                <div>
+                    <label for="Body" class="displayBlock">Body</label>
+                    <textarea id="plogInputBody" name="Body" placeholder="Florem ipsum turtle head sword lily cockscomb snow berry. Flowering cherry balloon flower scottish dock windflower    sugarbush. Waxflower forget-me-not star of bethlehem..."></textarea>
+                </div>
+                <input type="submit" value="Post"/>
+            </form>
+            
+        </div>
+        
         <?php include('../Layouts/contentEnd.php')?>
 
 

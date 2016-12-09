@@ -28,8 +28,45 @@
 
         <!-- Our Content Goes Here -->
         <h1 class="page-header">Plant Search</h1>
-        <p>This will contain a tool that searches the database and pulls up plant information</p>
+        <p>The following is an autocomplete search for common plant names</p>
 
+        <form action="" method="post">
+            <p>
+                <label for="txtPlantSearch">Search:</label>
+                <input type='text' id="txtPlantSearch">
+            </p>
+        </form>
+
+        <div id="plantCard">
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td>Common Name:</td>
+                        <td id="rowComName"></td>
+                    </tr>
+                    <tr>
+                        <td>Scientific Name:</td>
+                        <td id="rowSciName"></td>
+                    </tr>
+                    <tr>
+                        <td>Family:</td>
+                        <td id="rowFamily"></td>
+                    </tr>
+                    <tr>
+                        <td>Symbol:</td>
+                        <td id="rowSymbol"></td>
+                    </tr>
+                    <tr>
+                        <td>Synonym:</td>
+                        <td id="rowSynonym"></td>
+                    </tr>
+                    <tr>
+                        <td>Id:</td>
+                        <td id="rowId"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <?php include('../Layouts/contentEnd.php')?>
 
@@ -41,7 +78,10 @@
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="../Content/jQuery/jquery-3.1.1.js"></script>
+        <script src="../Content/jQuery/jquery-ui.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="../Content/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+        <script src="plantSearch.js"></script>
+
     </body>
 </html>
