@@ -1,3 +1,12 @@
+<?php 
+	require '../Includes/PlantDB.php';
+	include_once '../Includes/db_connect.php';
+	include_once '../Includes/loginFunctions.php';
+	session_start();
+	$pdb = new PlantDB();
+	$profilePictureFileName = $pdb->GetProfilePicture($_SESSION['userId']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +34,13 @@
 
         <?php include('../Layouts/contentStart.php')?>
          <p>&nbsp;</p>
+         <?php if(login_check($db) == true){ ?>
+           <script type="text/javascript">
+                  var username = '<?php echo htmlentities($_SESSION['username']); ?>';
+           </script>
+		   
         <p class="headline_bars">Your Profile on a High Level</p>
-        <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
+        <img src="uploads/<?=$profilePictureFileName?>" alt="Profile Picture" class="largeProfilePicture"/>
         <h2>Your Name!</h2>
         <div class="myGardenOverview">
             <p>
@@ -48,6 +62,10 @@
             </p>
         </div>
         
+        <?php }
+        else { ?>
+          <p>No access </p>
+        <?php   } ?>
         <?php include('../Layouts/contentEnd.php')?>
 
 

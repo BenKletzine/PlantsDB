@@ -387,6 +387,60 @@ class PlantDB
         $this->query = $this->db->prepare('call pdb_UpdatePassword(?,?);');
 
         // Step 2: Return the execution (true/false)
-		    return $this->query->execute(array($newPassword, $userId));
+        
+		
+		return $this->query->execute(array($newPassword, $userId));
+    }
+	
+    public function GetProfilePicture($userId){
+        // Step 1: Prep the query
+        $this->query = $this->db->prepare('call pdb_GetProfilePictureFileName(?);');
+
+        // Step 2: Return the execution (true/false)
+		
+		if ($this->query->execute(array($userId))) {
+            if ($row = $this->query->fetch()) {
+                return $row["ProfilePictureName"];
+            }
+        }
+		return "genericProfilePicture.jpg";
+    }
+	
+    public function GetPlogPosts($userId){
+        // Step 1: Prep the query
+        $this->query = $this->db->prepare('call pdb_GetPlogPosts(?);');
+
+        // Step 2: Return the execution (true/false)
+		
+		$plogArray = array();
+        // Step 3: Build the return
+        if ($this->query->execute(array($userId))) {
+            while ($row = $this->query->fetch()) {
+                $plogEntry = new PlogEntry(
+                    $row["Id"],
+                    $row["UserId"],
+                    $row["Title"],
+                    $row["Body"],
+                    $row["DatePosted"]
+                );
+                array_push($plogArray, $plogEntry);
+            }
+        }
+        // Step 4: Return the values
+        return $plogArray;
+    }
+	
+    public function GetPlogTitle($userId){
+        // Step 1: Prep the query
+        $this->query = $this->db->prepare('call pdb_GetPlogTitle(?);');
+
+        // Step 2: Return the execution (true/false)
+		
+		if ($this->query->execute(array($userId))) {
+            if ($row = $this->query->fetch()) {
+                return $row["Title"];
+            }
+        }
+		return "Your Plog";
     }
 }
