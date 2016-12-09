@@ -8,7 +8,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="Matt Springer, Ben Kletzine, Jeff Berger">
 
-    <title>PlantDB - Settings</title>
+    <title>PlantDB - My Plog</title>
 
     <!-- Styles -->
     <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
@@ -25,17 +25,25 @@
 
         <?php include('../Layouts/contentStart.php')?>
          <p>&nbsp;</p>
+        <p class="headline_bars">Your Garden</p>
         <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
-        <h2>Settings</h2>
-        <input type="button" value="Change Password"/>
-        <div class="margin-topbottom-5px">
-            <form action="upload.php" method="post" enctype="multipart/form-data">
-                Select image to upload:
-                <input type="file" name="fileToUpload" id="fileToUpload">
-                <input type="submit" value="Upload Image" name="submit">
-                <p>Files should be less than 5MB</p>
+        <h2>Your Name's Plog</h2>
+        <div>
+            <h3>
+                Your Plog title goes here.
+            </h3>
+            <form action="savePlogPost.php">
+                <label for="Title" class="displayBlock">Title</label>
+                <input id="plogInputTitle" type="text" name="Title" placeholder="Post Title"/>
+                <div>
+                    <label for="Body" class="displayBlock">Body</label>
+                    <textarea id="plogInputBody" name="Body" placeholder="Florem ipsum turtle head sword lily cockscomb snow berry. Flowering cherry balloon flower scottish dock windflower    sugarbush. Waxflower forget-me-not star of bethlehem..."></textarea>
+                </div>
+                <input type="submit" value="Post"/>
             </form>
+            
         </div>
+        
         <?php include('../Layouts/contentEnd.php')?>
 
 

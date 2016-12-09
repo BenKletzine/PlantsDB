@@ -339,5 +339,17 @@ class PlantDB
         return $this->query->execute(array($userid, $length, $width, $seasonid, $name, $description));
     }
 
+    /**
+     *  InsertPlogEntry()
+     *  Inserts an entry into a user's plog
+     */
+    public function InsertPlogEntry($title, $body, $userId) {
+        // Step 1: Prep the query
+        $this->query = $this->db->prepare('call pdb_InsertPlogEntry(?,?,?);');
+
+        // Step 2: Return the execution (true/false)
+        return $this->query->execute(array($title, $body, $userId));
+    }
+
 
 }
