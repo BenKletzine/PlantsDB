@@ -1,4 +1,5 @@
 <?php
+require '../Includes/PlantDB.php';
 session_start();
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -39,23 +40,18 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         
-<<<<<<< HEAD
         $fileNameToSaveAs = uniqid(""/*$_SESSION['userId']*/, true) . "." . $imageFileType;
-=======
-        $fileNameToSaveAs = uniqid("pPic" . '5'/*$_SESSION['userId']*/, true) . "." . $imageFileType;
->>>>>>> origin/PlantsDB-Matt
         if(rename("uploads/" . $_FILES["fileToUpload"]["name"], "uploads/" . $fileNameToSaveAs)){
             echo "The file has been renamed to " . $fileNameToSaveAs;
+			$pdb = new PlantDB();
+			$results = $pdb->UpdateProfilePicture($_SESSION['userId'], $fileNameToSaveAs);
         }
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
 }
 
-<<<<<<< HEAD
-header('Status: 301 Moved Permanently', false, 301);    
+/*header('Status: 301 Moved Permanently', false, 301);    
 header('Location: overview.php');    
-exit(); 
-=======
->>>>>>> origin/PlantsDB-Matt
+exit(); */
 ?>
