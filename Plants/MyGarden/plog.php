@@ -33,7 +33,9 @@
                 Your Plog title goes here.
             </h3>
             <div>
-                <input type="button" value="Add New Post"/>
+                <form action="addPlogPost.php">
+                    <input type="submit" value="Add New Post"/>
+                </form>
             </div>
             <div class="plogPost">
                 <h3>The Title of Your Last Plog Post</h3>

@@ -141,6 +141,15 @@ body {
     padding: 5px;
 }
 
+#plogInputTitle{
+    width:50%;
+}
+
+#plogInputBody{
+    width: 50%;
+    height: 5em;
+}
+
 /*
  * Links
  */
@@ -167,4 +176,8 @@ body {
 
 .strikeOut {
     text-decoration: line-through;
+}
+
+.displayBlock {
+    display: block;
 }
