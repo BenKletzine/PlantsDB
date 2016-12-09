@@ -185,12 +185,34 @@ body {
 .margin-topbottom-5px{
     margin-top: 5px;
     margin-bottom: 5px;
-<<<<<<< HEAD
+
 }
 
 .margin-topbottom-10px{
     margin-top: 10px;
     margin-bottom: 10px;
-=======
->>>>>>> origin/PlantsDB-Matt
+
+
+}
+
+.completed {
+  color: red;
+}
+
+.loginError {
+  margin-top: 10px;
+  color: red;
+}
+
+.hideError{
+  visibility: hidden;
+}
+#loginForm {
+  width: 25%;
+}
+#registerForm {
+  width: 25%;
+}
+.controlWidth {
+    width: 50%;
 }
