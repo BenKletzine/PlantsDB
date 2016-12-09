@@ -24,44 +24,39 @@
         <!-- ============================== -->
 
         <?php include('../Layouts/contentStart.php')?>
-         <p>&nbsp;</p>
-        <p class="headline_bars">The PLANTS Database</p>
-        <p>The PLANTS Database provides standardized information about
-          the vascular plants, mosses, liverworts, hornworts, and lichens
-          of the U.S. and its territories. It includes names, plant symbols,
-          checklists, distributional data, species abstracts, characteristics,
-          images, crop information, automated tools, onward Web links,
-          and references. This information primarily promotes land conservation
-          in the United States and its territories, but academic, educational,
-          and general use is encouraged. PLANTS reduces government spending
-          by minimizing duplication and making information exchange possible
-          across agencies and disciplines.</p>
-        <p>PLANTS is a collaborative effort of the <a href="http://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/plantsanimals/plants/?&cid=stelprdb1047060" onclick="_gaq.push(['_trackEvent', 'External Plants Service', 'Click Link to External Service', 'NPDT Info Page']);">USDA
-            NRCS National Plant Data Team</a> (NPDT), the <a href="http://www.itc.nrcs.usda.gov/">USDA
-            NRCS Information Technology Center</a> (ITC), The <a href="http://www.ocio.usda.gov/nitc/index.html">USDA
-            National Information Technology Center</a> (NITC), and many
-            other partners. Much of the PLANTS data and design is developed
-            at NPDT, and the Web application is programmed at ITC and
-            NITC and served through the USDA Web Farm. Here&rsquo;s
-          more information about who does what on the <a href="team.html">PLANTS
-          Team</a>, our
-          <a href="partners.html">Partners</a>, and our <a href="java/citePlants">Data
-          Contributors</a>.</p>
-        <ul>
-          <li>How to cite the <a href="java/citePlants">PLANTS
-            Database</a>.</li>
-          <li>Learn more about the <a href="about_adv_search.html">data
-            at PLANTS</a>.</li>
-          <li>See additional <a href="documents.html">PLANTS Documentation</a>.</li>
-          <li>Other questions are answered at the <a href="faq.html">PLANTS
-            FAQs</a>.</li>
-        </ul>
-        <p>Need more information? Please check our <a href="help.html">PLANTS
-            Help topics</a>.
+
+        <h1 class="page-header">The PLANTS Database</h1>
+        <p>
+            This database was designed to utilize the same dataset as the USDA Plants website, that offers a csv
+            of the original data.
         </p>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Our Implementation</div>
+            <div class="panel-body">
+                <p>
+                    This site was developed with the intent of creating user/account functionality. A user is able to register an login,
+                    see their profile, and manage their account. The basic tools and features of the site are still open for all.
+                </p>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Original Statement from the USDA Site</div>
+            <div class="panel-body">
+                <p>PLANTS is a collaborative effort of the <a href="http://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/plantsanimals/plants/?&cid=stelprdb1047060" onclick="_gaq.push(['_trackEvent', 'External Plants Service', 'Click Link to External Service', 'NPDT Info Page']);">USDA
+                        NRCS National Plant Data Team</a> (NPDT), the <a href="http://www.itc.nrcs.usda.gov/">USDA
+                        NRCS Information Technology Center</a> (ITC), The <a href="http://www.ocio.usda.gov/nitc/index.html">USDA
+                        National Information Technology Center</a> (NITC), and many
+                    other partners. Much of the PLANTS data and design is developed
+                    at NPDT, and the Web application is programmed at ITC and
+                    NITC and served through the USDA Web Farm. Here&rsquo;s
+                    more information about who does what on the PLANTS Team, our Partners, and our Data Contributors.
+                </p>
+            </div>
+        </div>
+
         <?php include('../Layouts/contentEnd.php')?>
-
-
 
         <!-- ============================== -->
         <!-- == Script Section           == -->

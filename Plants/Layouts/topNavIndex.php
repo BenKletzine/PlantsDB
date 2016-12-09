@@ -37,9 +37,6 @@ echo
                                 <li><a href='Tools/documentation.php'>Documentation</a></li>
                                 <li><a href='Tools/culturalPlants.php'>Cultural Plants</a></li>
                                 <li><a href='Tools/hardinessZones.php'>Hardiness Zones</a></li>
-                                <li role='separator' class='divider'></li>
-                                <li class='dropdown-header'>External Info</li>
-                                <li><a href='Tools/ecologicalSites.php'>Ecological Sites</a></li>
                             </ul>
                         </li>
                         <!-- About -->
@@ -51,12 +48,11 @@ echo
                                 <li><a href='About/help.php'>Help</a></li>
                                 <li role='separator' class='divider'></li>
                                 <li class='dropdown-header'>Social</li>
-                                <li><a href='http://plants.usda.gov/team.html'>Our Team</a></li>
-                                <li><a href='http://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/plantsanimals/plants/?&cid=stelprdb1047060'>The NPDT</a></li>
-                                <li><a href='http://plants.usda.gov/partners.html'>Our Partners</a></li>
+                                <li><a href='About/team.php'>Our Team</a></li>
+                                <li><a href='About/npdt.php'>The NPDT</a></li>
                                 <li role='separator' class='divider'></li>
                                 <li class='dropdown-header'>Credits</li>
-                                <li><a href='http://plants.usda.gov/cs_acknowledge.html'>Acknowledgements</a></li>
+                                <li><a href='About/acknowledgements.php'>Acknowledgements</a></li>
 
                             </ul>
                         </li>

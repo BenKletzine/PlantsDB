@@ -13,7 +13,7 @@ function displayLoggedInStatus(username) {
         "<li><a href='../Tools/hardinessZones.php'>Hardiness Zones</a></li>" +
         "<li role='separator' class='divider'></li>" +
         "<li class='dropdown-header'>Account</li>" +
-        "<li><a href='../includes/logout.php'>Logout</a></li>" +
+        "<li><a href='../Includes/logout.php'>Logout</a></li>" +
   "</ul>"
 
 }
