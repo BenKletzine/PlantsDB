@@ -1,8 +1,12 @@
 <?php
- session_start();
-include_once '../Includes/db_connect.php';
-include_once '../Includes/loginFunctions.php';
-
+	require '../Includes/PlantDB.php';
+	session_start();
+	include_once '../Includes/db_connect.php';
+	include_once '../Includes/loginFunctions.php';
+	$userId = $_SESSION['userId'];
+	$pdb = new PlantDB();
+	$profilePictureFileName = $pdb->GetProfilePicture($userId);
+	$seenPlants = $pdb->Get
 ?>
 
 <!DOCTYPE html>
@@ -35,19 +39,23 @@ include_once '../Includes/loginFunctions.php';
          <?php if(login_check($db) == true){ ?>
            <script type="text/javascript">
                   var username = '<?php echo htmlentities($_SESSION['username']); ?>';
-                  displayLoggedInStatus(username);
            </script>
 
         <p class="headline_bars">Your Garden</p>
-        <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
+        <img src="uploads/<?=$profilePictureFileName?>" alt="Profile Picture" class="largeProfilePicture"/>
         <h2>Your Name's Garden</h2>
         <div>
             <p>
                 Details about your garden would go here.
             </p>
             <div>
-                <input type="button" value="Add New Plant"/>
+				<form action="addPlant.php">
+					<input type="submit" value="Add New Plant"/>
+				</form>
             </div>
+			<ul>
+				
+			</ul>
             <div class="gardenPlant">
                 <h3>Sweet Corn</h3>
                 <p>
