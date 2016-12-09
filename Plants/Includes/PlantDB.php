@@ -402,6 +402,7 @@ class PlantDB
 		if ($this->query->execute(array($userId))) {
             if ($row = $this->query->fetch()) {
 				if(!empty($row["ProfilePictureName"]))
+				{
 					return $row["ProfilePictureName"];
 				}
             }
