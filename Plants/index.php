@@ -29,6 +29,18 @@
 <!-- Our Content Goes Here -->
 <h1 class="page-header">Home - News &amp; Updates</h1>
 
+<div class="panel panel-default">
+    <div class="panel-heading">Breaking News!</div>
+    <div class="panel-body">
+        <p>
+            Cookies were spotted today. That is all.
+        </p>
+    </div>
+    <div class="embed-responsive embed-responsive-4by3">
+        <iframe src="https://www.youtube.com/embed/IzlVXhrPzjg" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
 <h3>Second Check-In</h3>
 <div id="tabs">
     <ul>

@@ -23,7 +23,7 @@ var plantSearch = new function() {
 
                 })
             },
-            minLength: 4,
+            minLength: 3,
             select: function(event, data) {
                 $("#rowComName").text(data.item.CommonName);
                 $("#rowSciName").text(data.item.ScientificName);
