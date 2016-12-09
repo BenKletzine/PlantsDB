@@ -10,3 +10,8 @@ function showLoginError(error) {
                          "Please double-check and try again.";
       errMsg.className = "loginError";
   }
+
+function showUpdatePasswordError(error) {
+  var errMsg = document.getElementById("updatePassErr");
+  errMsg.innerHTML = "";
+}

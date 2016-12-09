@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
 	require '../Includes/PlantDB.php';
 	include_once '../Includes/db_connect.php';
@@ -5,6 +6,13 @@
 	session_start();
 	$pdb = new PlantDB();
 	$profilePictureFileName = $pdb->GetProfilePicture($_SESSION['userId']);
+=======
+<?php
+ session_start();
+include_once '../includes/db_connect.php';
+include_once '../includes/loginFunctions.php';
+
+>>>>>>> refs/remotes/origin/PlantsDB-Ben
 ?>
 
 <!DOCTYPE html>
@@ -35,23 +43,32 @@
         <?php include('../Layouts/contentStart.php')?>
          <p>&nbsp;</p>
          <?php if(login_check($db) == true){ ?>
+<<<<<<< HEAD
            <script type="text/javascript">
                   var username = '<?php echo htmlentities($_SESSION['username']); ?>';
            </script>
         <img src="uploads/<?=$profilePictureFileName?>" alt="Profile Picture" class="largeProfilePicture"/>
+=======
+           <script src="../js/loginHelper.js"></script>"
+           <script type="text/javascript">
+                  var username = '<?php echo htmlentities($_SESSION['username']); ?>';
+                  displayLoggedInStatus(username);
+           </script>
+        <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
+>>>>>>> refs/remotes/origin/PlantsDB-Ben
         <h2>Settings</h2>
         <div class="margin-topbottom-10px">
             <form action="updatePassword.php" method="post">
                 <label class="displayBlock" for="oldPassword">Current Password</label>
                 <input name="oldPassword" type="password" />
-                
+
                 <label class="displayBlock" for="newPassword">New Password</label>
                 <input name="newPassword" type="password" />
-                
+
                 <label class="displayBlock" for="confirmNewPassword">Confirm New Password</label>
                 <input name="confirmNewPassword" type="password" />
-                
-                <input type="button" value="Change Password"/>
+
+                <input type="submit" value="Change Password"/>
             </form>
         </div>
         <div class="margin-topbottom-10px">
