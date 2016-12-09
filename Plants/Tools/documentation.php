@@ -29,7 +29,7 @@
         <p class="well">The following documentation is provided by the Plants site and is open for access to all users. The files are available in pdf format.</p>
 
         <dl class="dl-horizontal">
-            <dt>Plants</dt>
+            <dt>Plants:</dt>
             <dd>
                 <a href="../Content/documents/PLANTS_Flyer_1-page.pdf" download="Flyer for the Plants Site">one page flyer (PDF; 176KB)</a>
             </dd>
@@ -45,7 +45,7 @@
                 <a href="../Content/documents/NPDT_3Fold.pdf" download="Flyer for the Plants Team">NPDT three-fold, two page flyer (PDF; 696KB)</a>
             </dd>
 
-            <dt>Tutorials</dt>
+            <dt>Tutorials:</dt>
             <dd>
                 <a href="../Content/documents/plants_tutorial.pdf" download="Plant tutorial">Plants Tutorial (PDF; 575KB)</a>
             </dd>
