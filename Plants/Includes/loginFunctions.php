@@ -1,69 +1,32 @@
-/* Secure session code based on
-  http://www.wikihow.com/Create-a-Secure-Login-Script-in-PHP-and-MySQL
-*/
-
 <?php
 include_once 'psl-config.php';
 
-function startSecureSession() {//sec_session_start
-    $session_name = 'plantSessionId';   // Set a custom session name was sec_session_id
-    session_name($session_name);
-    // Forces sessions to only use cookies, preventing attacks involved passing session ids in URLs
-    if (ini_set('session.use_only_cookies', 1) === FALSE) {
-        header("Location: ../error.php?err=Could not initiate a safe session (ini_set)");
-        exit();
-    }
-    // Gets current cookies params.
-    $cookieParams = session_get_cookie_params();
-    //cookies only over secure connections, through http only no js
-    $secure = true;
-    $httponly = true;
-    session_set_cookie_params($cookieParams["lifetime"],
-        $cookieParams["path"],
-        $cookieParams["domain"],
-        $secure,
-        $httponly);
-    session_start();             // Start the PHP session
-    session_regenerate_id(true); // regenerated the session, delete the old one.
-}
-
-function login($email, $password, $db) {
-    // Using prepared statements means that SQL injection is not possible.
-    // if successfully prepared then returns PDO Statement otherwise throws PDO Excdptions
+function login($email, $password, $db){
     if ($loginStatement = $db->prepare("SELECT Id, UserName, Password
         FROM Users
-        WHERE Email = ? :email
+        WHERE Email = :email
         LIMIT 1")
         ){
-        $loginStatement->bind_param(':email', $email);
+        $loginStatement->bindParam(':email', $email);
         $loginStatement->execute();
-      //  $user_id, $username, $db_password) result vars.
-        //if found then...
+
+        //If found then check the db password to the entered one
         if ($loginStatement->rowCount() == 1) {
-                /* Check if the password in the database matches
-                   the password the user submitted.
-                   will return object of the default stdClass
-                */
-                $loginInfo = $loginStatement->fetchObject();
-                if (password_verify($password, $loginInfo->Password)) {
-                    // Password is correct!
-                    // Get the user-agent string of the user.
+                $loginInfo = $loginStatement->fetchObject();//object of stdClass
+                if (crypt($password,CRYPT_SHA512)  === $loginInfo->Password) {
+                    // Password is correct! Get the user-agent string of the user.
                     $userBrowser = $_SERVER['HTTP_USER_AGENT'];
-                    // XSS protection as we might print this value
+                    // XSS protection, may print these values
                     $userId = preg_replace("/[^0-9]+/", "", $loginInfo->Id);
+                    $username = preg_replace("/[^a-zA-Z0-9_\-] +/", "",
+                                             $loginInfo->UserName);
                     $_SESSION['userId'] = $userId;
-                    // XSS protection as we might print this value
-                    $username = preg_replace("/[^a-zA-Z0-9_\-]+/",
-                                                                "",
-                                                                $loginInfo->UserName);
                     $_SESSION['username'] = $username;
-                    $_SESSION['loginString'] = hash('sha512', //changed login_string to loginString
-                              $loginInfo->Password . $userBrowser);
-                    // Login successful.
+                    $_SESSION['loginString'] = hash('sha512',
+                                               $loginInfo->Password . $userBrowser);
                     return true;
                 } else {
-                    // Password is not correct, display message?
-                    return false;
+                    return false; // wrong password
                 }
 
           } else { // they dont exist, email not registered
@@ -89,7 +52,7 @@ function login_check($db) {
         if ($loginStatement = $db->prepare("SELECT Password
                                       FROM Users
                                       WHERE Id = :id LIMIT 1")) {
-            $loginStatement->bind_param(':id', $userId);
+            $loginStatement->bindParam(':id', $userId);
             $loginStatement->execute();
 
             //if found then..
@@ -97,13 +60,13 @@ function login_check($db) {
                 $loginInfo = $loginStatement->fetchObject();
                 $loginCheck = hash('sha512', $loginInfo->Password . $userBrowser);
 
-                if (hash_equals($loginCheck, $loginString) ){
+                if (crypt($loginCheck,$loginString) ===  $loginString){
                     return true; //logged in
                 } else {
-                    return false;
+                    return $loginCheck . " " . $loginString;
                 }
             } else {
-                return false; //not found
+                return false; // not found
             }
         } else {
             return false; // couldn't prepare statement

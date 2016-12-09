@@ -149,3 +149,25 @@ body {
     color: black;
     text-decoration: none;
 }
+
+.completed {
+  color: red;
+}
+
+.loginError {
+  margin-top: 10px;
+  color: red;
+}
+
+.hideError{
+  visibility: hidden;
+}
+#loginForm {
+  width: 25%;
+}
+#registerForm {
+  width: 25%;
+}
+.controlWidth {
+    width: 50%;
+}

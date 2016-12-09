@@ -1,6 +1,22 @@
 <?php
-include_once 'Includes/register.inc.php';
-include_once 'Includes/loginFunctions.php';
+include_once 'includes/register.inc.php';
+include_once 'includes/loginFunctions.php';
+include_once 'includes/db_connect.php';
+include_once 'includes/psl-config.php';
+
+
+try{
+  $states = $db->query("SELECT
+                        Id,
+                        Name
+                      FROM
+                        States
+                    ");
+
+  $db = NULL;
+} catch(PDOException $x){
+  $x->getMessage();
+}
 ?>
 <!DOCTYPE html>
 
@@ -52,22 +68,54 @@ include_once 'Includes/loginFunctions.php';
 		</li>
 		<li>Your password and confirmation must match exactly</li>
 	</ul>
+  <div id="registerForm">
 	<form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>"
 			method="post"
 			name="registration_form">
-		Username: <input type='text'name='username'id='username' /><br>
-		Email:    <input type="text" name="email" id="email" /><br>
-		Password: <input type="password" name="password" id="password"/><br>
-		Confirm password: <input type="password" name="confirmpwd" id="confirmpwd" /><br>
-		<input type="button"
-			     value="Register"
-			     onclick="return regformhash(this.form,
-							   this.form.username,
-							   this.form.email,
-							   this.form.password,
-							   this.form.confirmpwd);" />
+      <div class="form-group ">
+          First Name: <input class="form-control"type="text" name="firstName" id="firstName" />
+      </div>
+      <div class="form-group ">
+        Last Name: <input class="form-control" type="text" name="lastName" id="lastName" />
+      </div>
+      <div class="form-group ">
+            BirthDay: <input class="form-control col-xs-2" type="text" name="birthdayPicker" id="birthdayPicker" />
+      </div>
+      <div class="form-group ">
+        State: <select class="form-control col-xs-2" id="state" name="state"><?php foreach ($states as $state) {  ?>
+                  <option value="<?= $state["Id"]?>"><?=$state["Name"]?></option>
+            <?php  } ?>
+          </select>
+      </div>
+      <div class="form-group ">
+        Username: <input class="form-control" type='text'name='username'id='username' />
+      </div>
+      <div class="form-group ">
+        		Email:    <input class="form-control" type="text" name="email" id="email" />
+      </div>
+      <div class="form-group ">
+        		Password: <input class="form-control" type="password" name="password" id="password"/>
+      </div>
+      <div class="form-group ">
+        		Confirm password: <input class="form-control" type="password" name="confirmpwd" id="confirmpwd" />
+      </div>
+      <div class="form-group ">
+        <input type="button"
+               value="Register"
+               onclick="return regformhash(this.form,
+                     this.form.username,
+                     this.form.email,
+                     this.form.password,
+                     this.form.confirmpwd);" />
+      </div>
 	</form>
+</div>
+ </head>
+ <body>
 
+   <!-- $( function() {
+     $("#birthdayPicker").datepicker("option","dateFormat",{ dateFormat: 'yyyy-mm-dd' });
+   }); -->
 	<p>Return to the <a href="index.php">login page</a>.</p>
 
 	<?php include('Layouts/contentEnd.php')?>
@@ -81,6 +129,12 @@ include_once 'Includes/loginFunctions.php';
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="Content/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 	<script src="js/index.js"></script>
+  <script type="text/JavaScript">
+  $("#birthdayPicker").datepicker({
+  dateFormat: "yy-mm-dd"
+});
+
+ </script>
 
 </body>
 </html>

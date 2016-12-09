@@ -1,7 +1,7 @@
-﻿<?php 
+﻿<?php
 
 echo
-" 
+"
 		<!-- ============================== -->
         <!-- == Navigation Section       == -->
         <!-- ============================== -->
@@ -20,7 +20,7 @@ echo
                     </button>
                     <a class='navbar-brand' href='../index.php'>USDA PlantDB</a>
                 </div>
-                
+
                 <!-- Nav Content -->
                 <div id='navbar' class='navbar-collapse collapse'>
                     <ul class='nav navbar-nav'>
@@ -66,9 +66,9 @@ echo
 
                     <!-- Login -->
 
-                    <ul class='nav navbar-nav navbar-right'>
+                    <ul  class='nav navbar-nav navbar-right'>
                         <!-- Login -->
-                        <li><a href='../login.php'>Log-In</a></li>
+                        <li id='loginStatus'><a href='../login.php'>Log-In</a></li>
                         <!-- Register -->
                         <li><a href='../register.php'>Register</a></li>
                     </ul>

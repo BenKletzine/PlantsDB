@@ -70,7 +70,7 @@
                     <td>Ben</td>
                     <td>Login System: PHP Scripts done through a users table, plus salt/sha?</td>
                 </tr>
-                <tr>
+                <tr class="completed">
                     <td>Ben</td>
                     <td>Registration System: Ability for a user to signup</td>
                 </tr>
