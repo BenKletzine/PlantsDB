@@ -1,11 +1,17 @@
 <?php 
 	require '../Includes/PlantDB.php';
-	require '../Includes/PlogEntry.php';
 	include_once '../Includes/db_connect.php';
 	include_once '../Includes/loginFunctions.php';
 	session_start();
 	$userId = $_SESSION['userId'];
 	$pdb = new PlantDB();
+	
+	if(login_check($db) != true)
+	{
+		header('Status: 301 Moved Permanently', false, 301);    
+		header('Location: ../index.php');
+	}
+	
 	$profilePictureFileName = $pdb->GetProfilePicture($_SESSION['userId']);
 	$plogPosts = $pdb->GetPlogPosts($userId);
 	$plogTitle = $pdb->GetPlogTitle($userId);
@@ -68,11 +74,11 @@
 				}
 			?>
         </div>
-        
         <?php }
-        else { ?>
-          <p>No access </p>
-        <?php   } ?>
+        else { 
+			header('Status: 301 Moved Permanently', false, 301);    
+			header('Location: ../index.php');
+		} ?>
         <?php include('../Layouts/contentEnd.php')?>
 
 

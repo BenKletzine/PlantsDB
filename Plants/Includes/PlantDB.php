@@ -1,6 +1,7 @@
 <?php
 require 'State.php';
 require 'Plant.php';
+require 'PlogEntry.php';
 require 'User.php';
 require 'Season.php';
 require 'UserGarden.php';
@@ -379,7 +380,7 @@ class PlantDB
         $this->query = $this->db->prepare('call pdb_UpdateProfilePicture(?,?);');
       
         // Step 2: Return the execution (true/false)
-        return $this->query->execute(array($newPassword, $userId));
+        return $this->query->execute(array($userId, $profilePictureName));
     }
   
     public function UpdatePassword($oldPassword, $newPassword, $confirmNewPassword, $userId){
@@ -400,7 +401,9 @@ class PlantDB
 		
 		if ($this->query->execute(array($userId))) {
             if ($row = $this->query->fetch()) {
-                return $row["ProfilePictureName"];
+				if(!empty($row["ProfilePictureName"]))
+					return $row["ProfilePictureName"];
+				}
             }
         }
 		return "genericProfilePicture.jpg";

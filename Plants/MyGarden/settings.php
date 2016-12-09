@@ -3,6 +3,13 @@
 	include_once '../Includes/db_connect.php';
 	include_once '../Includes/loginFunctions.php';
 	session_start();
+	
+	if(login_check($db) != true)
+	{
+		header('Status: 301 Moved Permanently', false, 301);    
+		header('Location: ../index.php');
+	}
+	
 	$pdb = new PlantDB();
 	$profilePictureFileName = $pdb->GetProfilePicture($_SESSION['userId']);
 ?>
@@ -41,20 +48,6 @@
         <img src="uploads/<?=$profilePictureFileName?>" alt="Profile Picture" class="largeProfilePicture"/>
         <h2>Settings</h2>
         <div class="margin-topbottom-10px">
-            <form action="updatePassword.php" method="post">
-                <label class="displayBlock" for="oldPassword">Current Password</label>
-                <input name="oldPassword" type="password" />
-                
-                <label class="displayBlock" for="newPassword">New Password</label>
-                <input name="newPassword" type="password" />
-                
-                <label class="displayBlock" for="confirmNewPassword">Confirm New Password</label>
-                <input name="confirmNewPassword" type="password" />
-                
-                <input type="button" value="Change Password"/>
-            </form>
-        </div>
-        <div class="margin-topbottom-10px">
             <form action="upload.php" method="post" enctype="multipart/form-data">
                 Select image to upload:
                 <input type="file" name="fileToUpload" id="fileToUpload">
@@ -63,9 +56,10 @@
             </form>
         </div>
         <?php }
-        else { ?>
-          <p>No access </p>
-        <?php   } ?>
+        else { 
+			header('Status: 301 Moved Permanently', false, 301);    
+			header('Location: ../index.php');
+		} ?>
         <?php include('../Layouts/contentEnd.php')?>
 
 
