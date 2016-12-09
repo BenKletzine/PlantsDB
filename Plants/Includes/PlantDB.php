@@ -351,14 +351,21 @@ class PlantDB
         return $this->query->execute(array($title, $body, $userId));
     }
 
-<<<<<<< HEAD
-    public function UpdatePassword($oldPassword, $newPassword, $confirmNewPassword, $userId){
+    public function UpdatePassword($userId, $newPassword){
         // Step 1: Prep the query
         $this->query = $this->db->prepare('call pdb_UpdatePassword(?,?);');
-=======
->>>>>>> origin/PlantsDB-Matt
 
         // Step 2: Return the execution (true/false)
         return $this->query->execute(array($newPassword, $userId));
+    }
+
+    public function DoesUserExist($userId, $newPassword){
+        // Step 1: Prep the query
+        $this->query = $this->db->prepare('call pdb_GetUser(?,?);');
+
+        // Step 2: Return the execution (true/false)
+        $rows = $this->query->execute(array($userId, $newPassword));
+
+		return $this->query->rowCount() > 0;//$this->query->fetch() != false;
     }
 }

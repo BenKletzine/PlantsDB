@@ -1,3 +1,10 @@
+<?php
+ session_start();
+include_once '../includes/db_connect.php';
+include_once '../includes/loginFunctions.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,20 +32,26 @@
 
         <?php include('../Layouts/contentStart.php')?>
          <p>&nbsp;</p>
+         <?php if(login_check($db) == true){ ?>
+           <script src="../js/loginHelper.js"></script>"
+           <script type="text/javascript">
+                  var username = '<?php echo htmlentities($_SESSION['username']); ?>';
+                  displayLoggedInStatus(username);
+           </script>
         <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
         <h2>Settings</h2>
         <div class="margin-topbottom-10px">
             <form action="updatePassword.php" method="post">
                 <label class="displayBlock" for="oldPassword">Current Password</label>
                 <input name="oldPassword" type="password" />
-                
+
                 <label class="displayBlock" for="newPassword">New Password</label>
                 <input name="newPassword" type="password" />
-                
+
                 <label class="displayBlock" for="confirmNewPassword">Confirm New Password</label>
                 <input name="confirmNewPassword" type="password" />
-                
-                <input type="button" value="Change Password"/>
+
+                <input type="submit" value="Change Password"/>
             </form>
         </div>
         <div class="margin-topbottom-10px">
@@ -49,6 +62,10 @@
                 <p>Files should be less than 5MB</p>
             </form>
         </div>
+        <?php }
+        else { ?>
+          <p>No access </p>
+        <?php   } ?>
         <?php include('../Layouts/contentEnd.php')?>
 
 
