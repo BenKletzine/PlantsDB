@@ -1,8 +1,18 @@
 <?php
- session_start();
-include_once '../Includes/db_connect.php';
-include_once '../Includes/loginFunctions.php';
-
+	require '../Includes/PlantDB.php';
+	session_start();
+	include_once '../Includes/db_connect.php';
+	include_once '../Includes/loginFunctions.php';
+	$userId = $_SESSION['userId'];
+	$pdb = new PlantDB();
+	
+	if(login_check($db) != true)
+	{
+		header('Status: 301 Moved Permanently', false, 301);    
+		header('Location: ../index.php');
+	}
+	
+	$profilePictureFileName = $pdb->GetProfilePicture($userId);
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +30,7 @@ include_once '../Includes/loginFunctions.php';
     <!-- Styles -->
     <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
     <link href="../Content/Styles/main.css" rel="stylesheet">
-      <script type="text/javascript" src="../js/loginHelper.js" ></script>
+
 </head>
     <body>
         <?php include('../Layouts/topNav.php') ?>
@@ -33,21 +43,26 @@ include_once '../Includes/loginFunctions.php';
         <?php include('../Layouts/contentStart.php') ?>
          <p>&nbsp;</p>
          <?php if(login_check($db) == true){ ?>
+           <script src="../js/loginHelper.js"></script>"
            <script type="text/javascript">
                   var username = '<?php echo htmlentities($_SESSION['username']); ?>';
-                  displayLoggedInStatus(username);
            </script>
 
         <p class="headline_bars">Your Garden</p>
-        <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
+        <img src="uploads/<?=$profilePictureFileName?>" alt="Profile Picture" class="largeProfilePicture"/>
         <h2>Your Name's Garden</h2>
         <div>
             <p>
                 Details about your garden would go here.
             </p>
             <div>
-                <input type="button" value="Add New Plant"/>
+				<form action="addPlant.php">
+					<input type="submit" value="Add New Plant"/>
+				</form>
             </div>
+			<ul>
+				
+			</ul>
             <div class="gardenPlant">
                 <h3>Sweet Corn</h3>
                 <p>
@@ -104,9 +119,10 @@ include_once '../Includes/loginFunctions.php';
             </div>
         </div>
         <?php }
-        else { ?>
-          <p>No access </p>
-        <?php   } ?>
+        else { 
+			header('Status: 301 Moved Permanently', false, 301);    
+			header('Location: ../index.php');
+		} ?>
         <?php include('../Layouts/contentEnd.php')?>
 
 
@@ -119,5 +135,6 @@ include_once '../Includes/loginFunctions.php';
         <script src="../Content/jQuery/jquery-3.1.1.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="../Content/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+
     </body>
 </html>
