@@ -26,8 +26,33 @@
         <?php include('../Layouts/contentStart.php')?>
 
         <h1 class="page-header">Documentation</h1>
-        <p>this will pull in content from the documents section of the usda site</p>
-        <iframe src="http://plants.usda.gov/documents.html"  style="width: 100%; height: 600px;"></iframe>
+        <p class="well">The following documentation is provided by the Plants site and is open for access to all users. The files are available in pdf format.</p>
+
+        <dl class="dl-horizontal">
+            <dt>Plants</dt>
+            <dd>
+                <a href="../Content/documents/PLANTS_Flyer_1-page.pdf" download="Flyer for the Plants Site">one page flyer (PDF; 176KB)</a>
+            </dd>
+            <dd>
+                <a href="../Content/documents/PLANTS_Flyer_2-page.pdf" download="Flyer for the Plants Site">two page flyer (PDF; 325KB)</a>
+            </dd>
+
+            <dt>NP Data Team:</dt>
+            <dd>
+                <a href="../Content/documents/NPDT_2Page.pdf" download="Flyer for the Plants Team">NPDT two page flyer (PDF; 913KB)</a>
+            </dd>
+            <dd>
+                <a href="../Content/documents/NPDT_3Fold.pdf" download="Flyer for the Plants Team">NPDT three-fold, two page flyer (PDF; 696KB)</a>
+            </dd>
+
+            <dt>Tutorials</dt>
+            <dd>
+                <a href="../Content/documents/plants_tutorial.pdf" download="Plant tutorial">Plants Tutorial (PDF; 575KB)</a>
+            </dd>
+        </dl>
+
+
+
 
 
         <?php include('../Layouts/contentEnd.php')?>
