@@ -2,7 +2,7 @@
 include_once 'psl-config.php';
 
 function login($email, $password, $db){
-    if ($loginStatement = $db->prepare("SELECT Id, UserName, Password
+    if ($loginStatement = $db->prepare("SELECT Id, UserName, Password, IsAdmin
         FROM Users
         WHERE Email = :email
         LIMIT 1")
@@ -24,13 +24,14 @@ function login($email, $password, $db){
                     $_SESSION['username'] = $username;
                     $_SESSION['loginString'] = hash('sha512',
                                                $loginInfo->Password . $userBrowser);
-                    return true;
+                    $_SESSION['isAdmin'] = $loginInfo->IsAdmin;
+
                 } else {
-                    return false; // wrong password
+                  //  return false; // wrong password
                 }
 
           } else { // they dont exist, email not registered
-              return false;
+              //return false;
           }
     }
 }

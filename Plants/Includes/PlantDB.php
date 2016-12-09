@@ -374,6 +374,7 @@ class PlantDB
         // Step 2: Return the execution (true/false)
         return $this->query->execute(array($title, $body, $userId));
     }
+<<<<<<< HEAD
 	
     public function UpdateProfilePicture($userId, $profilePictureName){
         // Step 1: Prep the query
@@ -384,6 +385,10 @@ class PlantDB
     }
   
     public function UpdatePassword($oldPassword, $newPassword, $confirmNewPassword, $userId){
+=======
+
+    public function UpdatePassword($userId, $newPassword){
+>>>>>>> refs/remotes/origin/PlantsDB-Ben
         // Step 1: Prep the query
         $this->query = $this->db->prepare('call pdb_UpdatePassword(?,?);');
 
@@ -446,5 +451,15 @@ class PlantDB
             }
         }
 		return "Your Plog";
+    }
+
+    public function DoesUserExist($userId, $newPassword){
+        // Step 1: Prep the query
+        $this->query = $this->db->prepare('call pdb_GetUser(?,?);');
+
+        // Step 2: Return the execution (true/false)
+        $rows = $this->query->execute(array($userId, $newPassword));
+
+		return $this->query->rowCount() > 0;//$this->query->fetch() != false;
     }
 }

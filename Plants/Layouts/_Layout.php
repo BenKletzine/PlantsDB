@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -13,7 +13,7 @@
     <!-- Styles -->
     <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
     <link href="../Content/styles/main.css" rel="stylesheet">
-
+    <script type="text/javascript" src="../js/loginHelper.js" ></script>
 </head>
     <body>
         <?php include('topNav.php') ?>
@@ -23,7 +23,8 @@
         <!-- == Content Section          == -->
         <!-- ============================== -->
 
-        <?php include('contentStart.php')?>
+        <?php include('contentStart.php') ?>
+
 
 
         <!-- Our Content Goes Here -->

@@ -48,6 +48,19 @@
         <img src="uploads/<?=$profilePictureFileName?>" alt="Profile Picture" class="largeProfilePicture"/>
         <h2>Settings</h2>
         <div class="margin-topbottom-10px">
+                <label class="displayBlock" for="oldPassword">Current Password</label>
+                <input name="oldPassword" type="password" />
+
+                <label class="displayBlock" for="newPassword">New Password</label>
+                <input name="newPassword" type="password" />
+
+                <label class="displayBlock" for="confirmNewPassword">Confirm New Password</label>
+                <input name="confirmNewPassword" type="password" />
+
+                <input type="submit" value="Change Password"/>
+            </form>
+        </div>
+        <div class="margin-topbottom-10px">
             <form action="upload.php" method="post" enctype="multipart/form-data">
                 Select image to upload:
                 <input type="file" name="fileToUpload" id="fileToUpload">

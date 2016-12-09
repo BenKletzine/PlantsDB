@@ -30,7 +30,7 @@
     <!-- Styles -->
     <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
     <link href="../Content/Styles/main.css" rel="stylesheet">
-      <script type="text/javascript" src="../js/loginHelper.js" ></script>
+
 </head>
     <body>
         <?php include('../Layouts/topNav.php') ?>
@@ -43,6 +43,7 @@
         <?php include('../Layouts/contentStart.php') ?>
          <p>&nbsp;</p>
          <?php if(login_check($db) == true){ ?>
+           <script src="../js/loginHelper.js"></script>"
            <script type="text/javascript">
                   var username = '<?php echo htmlentities($_SESSION['username']); ?>';
            </script>
@@ -134,5 +135,6 @@
         <script src="../Content/jQuery/jquery-3.1.1.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="../Content/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+
     </body>
 </html>
