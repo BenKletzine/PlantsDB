@@ -1,8 +1,8 @@
 <?php
-include_once 'includes/register.inc.php';
-include_once 'includes/loginFunctions.php';
-include_once 'includes/db_connect.php';
-include_once 'includes/psl-config.php';
+include_once 'Includes/register.inc.php';
+include_once 'Includes/loginFunctions.php';
+include_once 'Includes/db_connect.php';
+include_once 'Includes/psl-config.php';
 
 
 try{
@@ -110,13 +110,10 @@ try{
       </div>
 	</form>
 </div>
- </head>
- <body>
-
    <!-- $( function() {
      $("#birthdayPicker").datepicker("option","dateFormat",{ dateFormat: 'yyyy-mm-dd' });
    }); -->
-	<p>Return to the <a href="index.php">login page</a>.</p>
+	<p>Return to the <a href="login.php">login page</a>.</p>
 
 	<?php include('Layouts/contentEnd.php')?>
 	<!-- ============================== -->

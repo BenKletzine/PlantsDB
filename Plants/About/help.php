@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../Content/Styles/jquery-ui.css" rel="stylesheet">
     <link href="../Content/Styles/main.css" rel="stylesheet">
 
 </head>
@@ -25,43 +26,79 @@
 
         <?php include('../Layouts/contentStart.php')?>
 
-        <p>&nbsp;</p>
-        <p class="headline_bars">Help Topics</p>
-        <ul class="expandbullets">
-          <li><a href="java/citePlants" class="BodyTextBlackBold">Citation
-              and Acknowledgements.</a> Gives our preferred citation,
-            and acknowledges the primary contributors to PLANTS.</li>
-          <li><a href="/java/intellectualPlants" class="BodyTextBlackBold">Conditions
-              of Image and Data Use. </a> Please read about linking and
-              review our conditions of image and data use before distributing
-            or downloading PLANTS information.</li>
-          <li><a href="disclaimer.html" class="BodyTextBlackBold">Disclaimers</a>.
-            Disclaimers regarding your use of the USDA computing system,
-            our links, and our use of trade or company names.</li>
-          <li><span class="BodyTextBlackBold"><a href="documents.html">Documentation</a>.</span> Additional documentation about the PLANTS system including printable flyers and posters. </li>
-          <li><a href="faq.html" class="BodyTextBlackBold">Frequently
-            Asked Questions</a></li>
-          <li><span class="BodyTextBlackBold">Introduction to PLANTS.</span> View a presentation from the National Plant Data Team.
+        <h1 class="page-header">Help</h1>
+
+        <div id="tabs">
             <ul>
-              <li><a href="intro_to_plants_1211.pdf">Introduction to PLANTS (PDF version)</a></li>
-              <li><a href="intro_to_plants_1211.ppt">Introduction to PLANTS (Microsoft PowerPoint version)</a></li>
+                <li><a href="#tabs-1">Login & Registration</a></li>
+                <li><a href="#tabs-2">Tools</a></li>
+                <li><a href="#tabs-3">Feature Creep</a></li>
+                <li><a href="#tabs-4">DB Check-in</a></li>
             </ul>
-          </li>
-          <li><a href="search_tips.html" class="BodyTextBlackBold">Search Help</a>. Learn more about searching for plants on the PLANTS web site.</li>
-          <li><a href="plugins.html" class="BodyTextBlackBold">Plug-Ins
-              and Helper Applications to View PLANTS Documents</a>. Provides
-              links to the plug-ins or helper applications that are required
-            to view some PLANTS documents.</li>
-          <li><a href="sitemap.html" class="BodyTextBlackBold">Site Map.</a> Provides
-            an outline of the information and services available at the
-            PLANTS web site. </li>
-          <li><a href="du/DistributionUpdate.html" class="BodyTextBlackBold">Update
-            PLANTS Distribution Maps</a></li>
-          </ul>
+            <div id="tabs-1">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Username & Email</div>
+                    <div class="panel-body">
+                        <p>
+                            Usernames and emails must both be unique. If you are having trouble registering, please ensure both the username
+                            and the email is unique.
+                        </p>
+                    </div>
+
+                    <div class="panel-heading">Passwords</div>
+                    <div class="panel-body">
+                        <p>
+                            Passwords must contain 6 characters and a number. If you are having trouble registering, please ensure that
+                            your password matches these requirements.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div id="tabs-2">
+                <p>
+                    Enter the common name of the plant you want to find and it will begin to populate a list of matches for you.
+                    Click on one of the matches to see the information about the plant.
+                </p>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Plant Search</div>
+                    <div class="panel-body">
+                        <p>
+                            Enter the common name of the plant you want to find and it will begin to populate a list of matches for you.
+                            Click on one of the matches to see the information about the plant.
+                        </p>
+                    </div>
+                    <br />
+                    <div class="panel-heading">Plants by State</div>
+                    <div class="panel-body">
+                        <p>
+                            Click a state on the map to see a list of plants that are associated to that state. Please note, Wisconsin is
+                            one of the only states set up with data for the purpose of this project.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="tabs-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Plants by State</div>
+                    <div class="panel-body">
+
+                    </div>
+                </div>
+            </div>
+            <div id="tabs-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Citation Method</div>
+                    <div class="panel-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <?php include('../Layouts/contentEnd.php')?>
-
-
 
         <!-- ============================== -->
         <!-- == Script Section           == -->
@@ -69,7 +106,9 @@
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="../Content/jQuery/jquery-3.1.1.js"></script>
+        <script src="../Content/jQuery/jquery-ui.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="../Content/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+        <script src="help.js"></script>
     </body>
 </html>
