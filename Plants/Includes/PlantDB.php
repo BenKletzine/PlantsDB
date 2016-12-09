@@ -374,7 +374,6 @@ class PlantDB
         // Step 2: Return the execution (true/false)
         return $this->query->execute(array($title, $body, $userId));
     }
-<<<<<<< HEAD
 	
     public function UpdateProfilePicture($userId, $profilePictureName){
         // Step 1: Prep the query
@@ -384,11 +383,8 @@ class PlantDB
         return $this->query->execute(array($userId, $profilePictureName));
     }
   
-    public function UpdatePassword($oldPassword, $newPassword, $confirmNewPassword, $userId){
-=======
 
     public function UpdatePassword($userId, $newPassword){
->>>>>>> refs/remotes/origin/PlantsDB-Ben
         // Step 1: Prep the query
         $this->query = $this->db->prepare('call pdb_UpdatePassword(?,?);');
 
