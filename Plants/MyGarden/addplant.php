@@ -5,7 +5,17 @@
 	session_start();
 	$userId = $_SESSION['userId'];
 	$pdb = new PlantDB();
-	$profilePictureFileName = $pdb->GetProfilePicture($_SESSION['userId']);
+	
+	if(login_check($db) != true)
+	{
+		header('Status: 301 Moved Permanently', false, 301);    
+		header('Location: ../index.php');
+	}
+	
+	if(!isset($userId))
+	{
+		$profilePictureFileName = $pdb->GetProfilePicture($_SESSION['userId']);
+	}
 ?>
 
 <!DOCTYPE html>

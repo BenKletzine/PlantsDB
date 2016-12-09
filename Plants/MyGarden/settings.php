@@ -1,18 +1,17 @@
-<<<<<<< HEAD
 <?php 
 	require '../Includes/PlantDB.php';
 	include_once '../Includes/db_connect.php';
 	include_once '../Includes/loginFunctions.php';
 	session_start();
+	
+	if(login_check($db) != true)
+	{
+		header('Status: 301 Moved Permanently', false, 301);    
+		header('Location: ../index.php');
+	}
+	
 	$pdb = new PlantDB();
 	$profilePictureFileName = $pdb->GetProfilePicture($_SESSION['userId']);
-=======
-<?php
- session_start();
-include_once '../includes/db_connect.php';
-include_once '../includes/loginFunctions.php';
-
->>>>>>> refs/remotes/origin/PlantsDB-Ben
 ?>
 
 <!DOCTYPE html>
@@ -43,22 +42,12 @@ include_once '../includes/loginFunctions.php';
         <?php include('../Layouts/contentStart.php')?>
          <p>&nbsp;</p>
          <?php if(login_check($db) == true){ ?>
-<<<<<<< HEAD
            <script type="text/javascript">
                   var username = '<?php echo htmlentities($_SESSION['username']); ?>';
            </script>
         <img src="uploads/<?=$profilePictureFileName?>" alt="Profile Picture" class="largeProfilePicture"/>
-=======
-           <script src="../js/loginHelper.js"></script>"
-           <script type="text/javascript">
-                  var username = '<?php echo htmlentities($_SESSION['username']); ?>';
-                  displayLoggedInStatus(username);
-           </script>
-        <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
->>>>>>> refs/remotes/origin/PlantsDB-Ben
         <h2>Settings</h2>
         <div class="margin-topbottom-10px">
-            <form action="updatePassword.php" method="post">
                 <label class="displayBlock" for="oldPassword">Current Password</label>
                 <input name="oldPassword" type="password" />
 
@@ -80,9 +69,10 @@ include_once '../includes/loginFunctions.php';
             </form>
         </div>
         <?php }
-        else { ?>
-          <p>No access </p>
-        <?php   } ?>
+        else { 
+			header('Status: 301 Moved Permanently', false, 301);    
+			header('Location: ../index.php');
+		} ?>
         <?php include('../Layouts/contentEnd.php')?>
 
 

@@ -5,8 +5,14 @@
 	include_once '../Includes/loginFunctions.php';
 	$userId = $_SESSION['userId'];
 	$pdb = new PlantDB();
+	
+	if(login_check($db) != true)
+	{
+		header('Status: 301 Moved Permanently', false, 301);    
+		header('Location: ../index.php');
+	}
+	
 	$profilePictureFileName = $pdb->GetProfilePicture($userId);
-	$seenPlants = $pdb->Get
 ?>
 
 <!DOCTYPE html>
@@ -113,9 +119,10 @@
             </div>
         </div>
         <?php }
-        else { ?>
-          <p>No access </p>
-        <?php   } ?>
+        else { 
+			header('Status: 301 Moved Permanently', false, 301);    
+			header('Location: ../index.php');
+		} ?>
         <?php include('../Layouts/contentEnd.php')?>
 
 

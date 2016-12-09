@@ -4,7 +4,16 @@
 	include_once '../Includes/loginFunctions.php';
 	session_start();
 	$pdb = new PlantDB();
+	
+	$userId = $_SESSION['userId'];
+	if(login_check($db) != true)
+	{
+		header('Status: 301 Moved Permanently', false, 301);    
+		header('Location: ../index.php');
+	}
+	
 	$profilePictureFileName = $pdb->GetProfilePicture($_SESSION['userId']);
+	$plogPosts = $pdb->GetPlogPosts($userId);
 ?>
 
 <!DOCTYPE html>
@@ -47,14 +56,20 @@
                 You have 30 plants in <a href="myGarden.php">Your Garden</a>.
             </p>
         </div>
-        <div class="plogPost">
-            <a href="plog.php" class="discreteLink">
-                <h3>The Title of Your Last Plog Post</h3>
-                <p>
-                    The first 100 characters of your last Plog post would appear here before slowly tapering off in...
-                </p>
-            </a>
-        </div>
+        <?php
+				while(list(,$post) = each($plogPosts))
+				{
+					?>
+					<div class="plogPost">
+						<h3><?=$post->Title?></h3>
+						<p>
+							<?=$post->Body?>
+						</p>
+					</div>
+					<?php
+					break;
+				}
+			?>
         
         <div>
             <p>
@@ -63,9 +78,10 @@
         </div>
         
         <?php }
-        else { ?>
-          <p>No access </p>
-        <?php   } ?>
+        else { 
+			header('Status: 301 Moved Permanently', false, 301);    
+			header('Location: ../index.php');
+		} ?>
         <?php include('../Layouts/contentEnd.php')?>
 
 
