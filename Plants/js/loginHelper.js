@@ -8,13 +8,8 @@ function displayLoggedInStatus(username) {
       "<li><a href='../Tools/plantByState.php'>Plants By State</a></li>"+
         "<li role='separator' class='divider'></li>" +
         "<li class='dropdown-header'>Account</li>" +
-<<<<<<< HEAD
-        "<li><a href='../Includes/logout.php'>Logout</a></li>" +
-  "</ul>"
-=======
         "<li><a href='../MyGarden/settings.php'>Settings</a></li>" +
-        "<li><a href='../includes/logout.php'>Logout</a></li>" +
-  "</ul>";
->>>>>>> refs/remotes/origin/PlantsDB-Ben
+        "<li><a href='../Includes/logout.php'>Logout</a></li>" +
+    "</ul>";
 
 }
