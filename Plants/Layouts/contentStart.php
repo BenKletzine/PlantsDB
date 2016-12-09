@@ -1,4 +1,5 @@
 <?php
+session_start();
 echo "
 <div class='container-fluid'>
             <div class='row'>

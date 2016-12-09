@@ -351,9 +351,12 @@ class PlantDB
         return $this->query->execute(array($title, $body, $userId));
     }
 
+<<<<<<< HEAD
     public function UpdatePassword($oldPassword, $newPassword, $confirmNewPassword, $userId){
         // Step 1: Prep the query
         $this->query = $this->db->prepare('call pdb_UpdatePassword(?,?);');
+=======
+>>>>>>> origin/PlantsDB-Matt
 
         // Step 2: Return the execution (true/false)
         return $this->query->execute(array($newPassword, $userId));
