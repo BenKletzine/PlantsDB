@@ -12,7 +12,23 @@
 
     <!-- Styles -->
     <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../Content/Styles/jquery-ui.css" rel="stylesheet">
     <link href="../Content/Styles/main.css" rel="stylesheet">
+
+    <style>
+        .ui-autocomplete {
+            max-height: 400px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+        }
+        /* IE 6 doesn't support max-height
+         * we use height instead, but this forces the menu to always be this tall
+         */
+        * html .ui-autocomplete {
+            height: 100px;
+        }
+    </style>
 
 </head>
     <body>

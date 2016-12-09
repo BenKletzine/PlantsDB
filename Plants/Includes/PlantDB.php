@@ -100,6 +100,29 @@ class PlantDB
         return json_encode($stateArray);
     }
 
+    public function GetPlantByState($state) {
+        // Step 1: Prep the query
+        $this->query = $this->db->prepare('call pdb_GetPlantByState(?);');
+        // Step 2: Prep the return
+        $returnArray = array();
+        // Step 3: Build the return
+        if ($this->query->execute(array($state))) {
+            while ($row = $this->query->fetch()) {
+                $plant = new Plant(
+                    $row["PlantId"],
+                    $row["Symbol"],
+                    $row["Synonym"],
+                    $row["ScientificName"],
+                    $row["CommonName"],
+                    $row["Family"]
+                );
+                array_push($returnArray, $plant);
+            }
+        }
+        // Step 4: Return the values
+        return json_encode($returnArray);
+    }
+
     /**
      * GetAllPlants()
      * @return - An array of plant objects containing all of the plants from the DB
@@ -351,12 +374,10 @@ class PlantDB
         return $this->query->execute(array($title, $body, $userId));
     }
 
-<<<<<<< HEAD
+
     public function UpdatePassword($oldPassword, $newPassword, $confirmNewPassword, $userId){
         // Step 1: Prep the query
         $this->query = $this->db->prepare('call pdb_UpdatePassword(?,?);');
-=======
->>>>>>> origin/PlantsDB-Matt
 
         // Step 2: Return the execution (true/false)
         return $this->query->execute(array($newPassword, $userId));

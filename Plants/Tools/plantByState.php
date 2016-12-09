@@ -38,8 +38,25 @@
 
         <div id="map" style="width: 930px; height: 630px;"></div>
 
-
-
+        <div class="panel panel-default">
+            <div class="panel-heading">Results</div>
+            <div class="panel-body">
+                <p>
+                    The following table displays the resulting list of plants based on the selected state.
+                </p>
+            </div>
+        <table class="table table-hover" id="tblResults">
+            <tbody id="tblBody">
+                <tr>
+                    <th>Plant ID</th>
+                    <th>Common Name</th>
+                    <th>Synonym</th>
+                    <th>Symbol</th>
+                    <th>Scientific Name</th>
+                </tr>
+            </tbody>
+        </table>
+        </div>
         <?php include('../Layouts/contentEnd.php')?>
         <!-- ============================== -->
         <!-- == Script Section           == -->
