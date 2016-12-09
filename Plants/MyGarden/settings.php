@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -8,12 +8,11 @@
     <meta name="keywords" content="">
     <meta name="author" content="Matt Springer, Ben Kletzine, Jeff Berger">
 
-    <title>PlantDB - Cultural Plants</title>
+    <title>PlantDB - Settings</title>
 
     <!-- Styles -->
     <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
     <link href="../Content/Styles/main.css" rel="stylesheet">
-
 
 </head>
     <body>
@@ -25,15 +24,15 @@
         <!-- ============================== -->
 
         <?php include('../Layouts/contentStart.php')?>
-
-
-        <h1 class="page-header">Culture Plants</h1>
-        <p>this will pull in content from the cultural plant section of the usda site</p>
-        <iframe src="http://plants.usda.gov/java/factSheet?cultural=yes" style="width: 100%; height: 600px;"></iframe>
-
-
-
+         <p>&nbsp;</p>
+        <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
+        <h2>Settings</h2>
+        <input type="button" value="Change Password"/>
+        <input type="button" value="Change Profile Picture"/>
         <?php include('../Layouts/contentEnd.php')?>
+
+
+
         <!-- ============================== -->
         <!-- == Script Section           == -->
         <!-- ============================== -->

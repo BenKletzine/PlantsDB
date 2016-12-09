@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -8,12 +8,11 @@
     <meta name="keywords" content="">
     <meta name="author" content="Matt Springer, Ben Kletzine, Jeff Berger">
 
-    <title>PlantDB - Cultural Plants</title>
+    <title>PlantDB - My Profile</title>
 
     <!-- Styles -->
     <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
     <link href="../Content/Styles/main.css" rel="stylesheet">
-
 
 </head>
     <body>
@@ -25,15 +24,34 @@
         <!-- ============================== -->
 
         <?php include('../Layouts/contentStart.php')?>
-
-
-        <h1 class="page-header">Culture Plants</h1>
-        <p>this will pull in content from the cultural plant section of the usda site</p>
-        <iframe src="http://plants.usda.gov/java/factSheet?cultural=yes" style="width: 100%; height: 600px;"></iframe>
-
-
-
+         <p>&nbsp;</p>
+        <p class="headline_bars">Your Profile on a High Level</p>
+        <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
+        <h2>Your Name!</h2>
+        <div class="myGardenOverview">
+            <p>
+                You have 30 plants in <a href="myGarden.php">Your Garden</a>.
+            </p>
+        </div>
+        <div class="plogPost">
+            <a href="plog.php" class="discreteLink">
+                <h3>The Title of Your Last Plog Post</h3>
+                <p>
+                    The first 100 characters of your last Plog post would appear here before slowly tapering off in...
+                </p>
+            </a>
+        </div>
+        
+        <div>
+            <p>
+                <a href="settings.php">Settings</a>
+            </p>
+        </div>
+        
         <?php include('../Layouts/contentEnd.php')?>
+
+
+
         <!-- ============================== -->
         <!-- == Script Section           == -->
         <!-- ============================== -->

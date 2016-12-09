@@ -8,11 +8,11 @@
     <meta name="keywords" content="">
     <meta name="author" content="Matt Springer, Ben Kletzine, Jeff Berger">
 
-    <title>Layout Template</title>
+    <title>PlantDB - Ecological Sites</title>
 
     <!-- Styles -->
     <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
-    <link href="../Content/styles/main.css" rel="stylesheet">
+    <link href="../Content/Styles/main.css" rel="stylesheet">
 
 </head>
     <body>

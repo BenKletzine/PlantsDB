@@ -26,48 +26,41 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     // breaking these rules.
     //
 
-    $prep_stmt = "SELECT id FROM members WHERE email = ? LIMIT 1";
-    $stmt = $mysqli->prepare($prep_stmt);
+    $emailExists = "SELECT Id FROM Users WHERE Email = :email LIMIT 1";
+    $emailExistsStatement = $mysqli->prepare($emailExists);
 
    // check existing email
-    if ($stmt) {
-        $stmt->bind_param('s', $email);
-        $stmt->execute();
-        $stmt->store_result();
+    if ($emailExistsStatement) {
+        $emailExistsStatement->bind_param(':email', $emailExistsStatement->Email);
+        $emailExistsStatement->execute();
 
-        if ($stmt->num_rows == 1) {
+        if ($emailExistsStatement->rowCount() == 1) {
             // A user with this email address already exists
             $error_msg .= '<p class="error">A user with this email address already exists.</p>';
-                        $stmt->close();
+                        $emailExistsStatement->close();
         }
     } else {
         $error_msg .= '<p class="error">Database error Line 39</p>';
-                $stmt->close();
+                $emailExistsStatement->close();
     }
 
     // check existing username
-    $prep_stmt = "SELECT id FROM members WHERE username = ? LIMIT 1";
-    $stmt = $mysqli->prepare($prep_stmt);
+    $userNameExists = "SELECT Id FROM Users WHERE Username = :username LIMIT 1";
+    $userNameExistsStatement = $mysqli->prepare($prep_stmt);
 
-    if ($stmt) {
-        $stmt->bind_param('s', $username);
-        $stmt->execute();
-        $stmt->store_result();
+    if ($userNameExistsStatement) {
+        $userNameExistsStatement->bind_param(':username', $userNameExistsStatement->UserName);
+        $userNameExistsStatement->execute();
 
-                if ($stmt->num_rows == 1) {
-                        // A user with this username already exists
-                        $error_msg .= '<p class="error">A user with this username already exists</p>';
-                        $stmt->close();
-                }
-        } else {
-                $error_msg .= '<p class="error">Database error line 55</p>';
-                $stmt->close();
+        if ($userNameExistsStatement->rowCount() == 1) {
+                // A user with this username already exists
+                $error_msg .= '<p class="error">A user with this username already exists</p>';
+                $userNameExistsStatement->close();
         }
-
-    // TODO:
-    // We'll also have to account for the situation where the user doesn't have
-    // rights to do registration, by checking what type of user is attempting to
-    // perform the operation.
+    } else {
+                $error_msg .= '<p class="error">Database error line 55</p>';
+                $userNameExistsStatement->close();
+    }
 
     if (empty($error_msg)) {
 
@@ -77,10 +70,13 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
         $password = password_hash($password, PASSWORD_BCRYPT);
 
         // Insert the new user into the database
-        if ($insert_stmt = $mysqli->prepare("INSERT INTO members (username, email, password) VALUES (?, ?, ?)")) {
-            $insert_stmt->bind_param('sss', $username, $email, $password);
+        if ($insertStatement = $db->prepare("INSERT INTO Users (UserName, Email, Password)
+                                        VALUES (:email, :username, :password)")) {
+            $insertStatement->bind_param(':email',  $email);
+            $insertStatement->bind_param(':username', $username);
+            $insertStatement->bind_param(':password', $password);
             // Execute the prepared query.
-            if (! $insert_stmt->execute()) {
+            if (! $insertStatement->execute()) {
                 header('Location: ../error.php?err=Registration failure: INSERT');
             }
         }
