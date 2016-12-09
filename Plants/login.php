@@ -1,8 +1,7 @@
 <?php
-include_once 'Includes/db_connect.php';
-include_once 'Includes/loginFunctions.php';
-
-startSecureSession();
+session_start();
+include_once 'includes/db_connect.php';
+include_once 'includes/loginFunctions.php';
 
 if (login_check($db) == true) {
     $logged = 'in';
@@ -28,7 +27,7 @@ if (login_check($db) == true) {
     <link href="Content/Styles/main.css" rel="stylesheet">
     <script type="text/JavaScript" src="js/sha512.js"></script>
     <script type="text/JavaScript" src="js/forms.js"></script>
-
+    <script type="text/JavaScript" src="js/errorProcessing.js"></script>
 </head>
 <body>
     <?php include('Layouts/topNavIndex.php') ?>
@@ -37,28 +36,34 @@ if (login_check($db) == true) {
     <!-- == Content Section          == -->
     <!-- ============================== -->
 
-    <?php include('Layouts/contentStart.php')?>
-
+    <?php include('Layouts/contentStart.php');  ?>
+    <div id="loginForm">
+        <h1>Login</h1>
+        <form action="includes/process_login.php" method="post" name="login_form">
+            <div class="form-group ">
+                Email: <input class="form-control" type="text" id="email" name="email" />
+            </div>
+            <div class="form-group ">
+              Password: <input  class="form-control"
+                                type="password"
+                                name="password"
+                                id="password"/>
+            </div>
+            <input type="button"
+                   value="Login"
+                   onclick="formhash(this.form, this.form.password);" />
+        </form>
+    </div>
+    <?php  if(isset($_GET['error'])){ ?>
+              <p id="errorMsg"></p>
+              <script> showLoginError();</script>
+              <p>If you don't have a login, please <a href='register.php'>register</a></p>
     <?php
-    if (isset($_GET['error'])) {
-        echo '<p class="error">Error Logging In!</p>';
-    }
-    ?>
-    <form action="Includes/process_login.php" method="post" name="login_form">
-        Email: <input type="text" name="email" />
-        Password: <input type="password"
-                         name="password"
-                         id="password"/>
-        <input type="button"
-               value="Login"
-               onclick="formhash(this.form, this.form.password);" />
-    </form>
 
-    <?php
-            if (login_check($db) == true) {
-                            echo '<p>Currently logged ' . $logged . ' as ' . htmlentities($_SESSION['username']) . '.</p>';
-
-                echo '<p>Do you want to change user? <a href="Includes/logout.php">Log out</a>.</p>';
+            }
+            elseif (login_check($db) == true) {
+                echo '<p>Currently logged ' . $logged . ' as ' . htmlentities($_SESSION['username']) . '.</p>';
+                echo '<p>Do you want to change user? <a href="includes/logout.php">Log out</a>.</p>';
             } else {
                             echo '<p>Currently logged ' . $logged . '.</p>';
                             echo "<p>If you don't have a login, please <a href='register.php'>register</a></p>";

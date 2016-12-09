@@ -27,60 +27,67 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     //
 
     $emailExists = "SELECT Id FROM Users WHERE Email = :email LIMIT 1";
-    $emailExistsStatement = $mysqli->prepare($emailExists);
-
+    $emailExistsStatement = $db->prepare($emailExists);
+    $emailExistsStatement->bindParam(':email', $email);
    // check existing email
     if ($emailExistsStatement) {
-        $emailExistsStatement->bind_param(':email', $emailExistsStatement->Email);
+
+    //    $emailExistsStatement->bind_param(":email", $email);
         $emailExistsStatement->execute();
 
         if ($emailExistsStatement->rowCount() == 1) {
             // A user with this email address already exists
             $error_msg .= '<p class="error">A user with this email address already exists.</p>';
-                        $emailExistsStatement->close();
+
         }
     } else {
         $error_msg .= '<p class="error">Database error Line 39</p>';
-                $emailExistsStatement->close();
+
     }
 
     // check existing username
     $userNameExists = "SELECT Id FROM Users WHERE Username = :username LIMIT 1";
-    $userNameExistsStatement = $mysqli->prepare($prep_stmt);
-
+    $userNameExistsStatement = $db->prepare($userNameExists);
+    $userNameExistsStatement->bindParam(':username',$username);
     if ($userNameExistsStatement) {
-        $userNameExistsStatement->bind_param(':username', $userNameExistsStatement->UserName);
+  //      $userNameExistsStatement->bind_param(':username', $userName);
         $userNameExistsStatement->execute();
 
         if ($userNameExistsStatement->rowCount() == 1) {
                 // A user with this username already exists
                 $error_msg .= '<p class="error">A user with this username already exists</p>';
-                $userNameExistsStatement->close();
+
         }
     } else {
                 $error_msg .= '<p class="error">Database error line 55</p>';
-                $userNameExistsStatement->close();
+
     }
 
     if (empty($error_msg)) {
-
-        // Create hashed password using the password_hash function.
-        // This function salts it with a random salt and can be verified with
-        // the password_verify function.
-        $password = password_hash($password, PASSWORD_BCRYPT);
+        $hashedPass = crypt($password,CRYPT_SHA512);// php ver:5.5   $password = password_hash($password, PASSWORD_BCRYPT);
 
         // Insert the new user into the database
-        if ($insertStatement = $db->prepare("INSERT INTO Users (UserName, Email, Password)
-                                        VALUES (:email, :username, :password)")) {
-            $insertStatement->bind_param(':email',  $email);
-            $insertStatement->bind_param(':username', $username);
-            $insertStatement->bind_param(':password', $password);
+        $state = $_POST['state'];
+        $first = $_POST['firstName'];
+        $last = $_POST['lastName'];
+        $birthDay = $_POST['birthdayPicker'];
+        if ($insertStatement = $db->prepare("INSERT INTO Users (UserName, Email, Password, FirstName, LastName, DateOfBirth, StateId)
+                                        VALUES (:username,:email,:password,:first,:last,:dateofbirth,:state)")) {
+            $insertStatement->bindParam(':email',  $email);
+            $insertStatement->bindParam(':username', $username);
+            $insertStatement->bindParam(':password', $hashedPass);
+            $insertStatement->bindParam(':first', $first);
+            $insertStatement->bindParam(':last', $last);
+            $insertStatement->bindParam(':dateofbirth', $birthDay);
+            $insertStatement->bindParam(':state', $state);
             // Execute the prepared query.
             if (! $insertStatement->execute()) {
+
                 header('Location: ../error.php?err=Registration failure: INSERT');
             }
         }
-        header('Location: ./register_success.php');
+
+        header('Location: ./MyGarden/overview.php');
     }
 }
 ?>

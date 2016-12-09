@@ -1,3 +1,10 @@
+<?php
+ session_start();
+include_once '../includes/db_connect.php';
+include_once '../includes/loginFunctions.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +20,7 @@
     <!-- Styles -->
     <link href="../Content/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
     <link href="../Content/Styles/main.css" rel="stylesheet">
-
+      <script type="text/javascript" src="../js/loginHelper.js" ></script>
 </head>
     <body>
         <?php include('../Layouts/topNav.php') ?>
@@ -23,8 +30,14 @@
         <!-- == Content Section          == -->
         <!-- ============================== -->
 
-        <?php include('../Layouts/contentStart.php')?>
+        <?php include('../Layouts/contentStart.php') ?>
          <p>&nbsp;</p>
+         <?php if(login_check($db) == true){ ?>
+           <script type="text/javascript">
+                  var username = '<?php echo htmlentities($_SESSION['username']); ?>';
+                  displayLoggedInStatus(username);
+           </script>
+
         <p class="headline_bars">Your Garden</p>
         <img src="genericProfilePicture.jpg" alt="Profile Picture" class="largeProfilePicture"/>
         <h2>Your Name's Garden</h2>
@@ -90,7 +103,10 @@
                 </p>
             </div>
         </div>
-        
+        <?php }
+        else { ?>
+          <p>No access </p>
+        <?php   } ?>
         <?php include('../Layouts/contentEnd.php')?>
 
 
