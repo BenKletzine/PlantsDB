@@ -1,9 +1,7 @@
 <?php
-include_once 'Includes/register.inc.php';
-include_once 'Includes/loginFunctions.php';
 include_once 'Includes/db_connect.php';
-include_once 'Includes/psl-config.php';
-
+include_once 'Includes/loginFunctions.php';
+include_once 'Includes/register.inc.php';
 
 try{
   $states = $db->query("SELECT
@@ -13,9 +11,14 @@ try{
                         States
                     ");
 
-  $db = NULL;
+  //$db = NULL;
 } catch(PDOException $x){
   $x->getMessage();
+}
+if (login_check($db) == true) {
+    $logged = 'in';
+} else {
+    $logged = 'out';
 }
 ?>
 <!DOCTYPE html>
@@ -37,6 +40,11 @@ try{
     <link href="Content/Styles/main.css" rel="stylesheet">
     <script type="text/JavaScript" src="js/sha512.js"></script>
     <script type="text/JavaScript" src="js/forms.js"></script>
+    <style type="text/css">
+        .ui-datepicker-month, .ui-datepicker-year {
+            color: #333;
+        }
+    </style>
 </head>
 
 <body>
@@ -46,7 +54,7 @@ try{
 <!-- == Content Section          == -->
 <!-- ============================== -->
 
-<?php include('Layouts/contentStart.php')?>
+<?php include('Layouts/contentStartIndex.php');  ?>
 	<!-- Registration form to be output if the POST variables are not
 	set or if the registration script caused an error. -->
 	<h1>Register with us</h1>
@@ -128,7 +136,10 @@ try{
 	<script src="js/index.js"></script>
   <script type="text/JavaScript">
   $("#birthdayPicker").datepicker({
-  dateFormat: "yy-mm-dd"
+        dateFormat: "yy-mm-dd",
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1900:+nn"
 });
 
  </script>

@@ -1,3 +1,14 @@
+<?php
+session_start();
+include_once '../Includes/db_connect.php';
+include_once '../Includes/loginFunctions.php';
+
+if (login_check($db) == true) {
+    $logged = 'in';
+} else {
+    $logged = 'out';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +43,6 @@
             <ul>
                 <li><a href="#tabs-1">Login & Registration</a></li>
                 <li><a href="#tabs-2">Tools</a></li>
-                <li><a href="#tabs-3">Feature Creep</a></li>
-                <li><a href="#tabs-4">DB Check-in</a></li>
             </ul>
             <div id="tabs-1">
 
@@ -57,10 +66,6 @@
 
             </div>
             <div id="tabs-2">
-                <p>
-                    Enter the common name of the plant you want to find and it will begin to populate a list of matches for you.
-                    Click on one of the matches to see the information about the plant.
-                </p>
                 <div class="panel panel-default">
                     <div class="panel-heading">Plant Search</div>
                     <div class="panel-body">
@@ -76,22 +81,6 @@
                             Click a state on the map to see a list of plants that are associated to that state. Please note, Wisconsin is
                             one of the only states set up with data for the purpose of this project.
                         </p>
-                    </div>
-                </div>
-            </div>
-            <div id="tabs-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Plants by State</div>
-                    <div class="panel-body">
-
-                    </div>
-                </div>
-            </div>
-            <div id="tabs-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Citation Method</div>
-                    <div class="panel-body">
-
                     </div>
                 </div>
             </div>
