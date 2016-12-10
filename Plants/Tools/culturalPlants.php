@@ -1,4 +1,15 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+include_once '../Includes/db_connect.php';
+include_once '../Includes/loginFunctions.php';
+
+if (login_check($db) == true) {
+    $logged = 'in';
+} else {
+    $logged = 'out';
+}
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">

@@ -46,6 +46,7 @@
            <script src="../js/loginHelper.js"></script>"
            <script type="text/javascript">
                   var username = '<?php echo htmlentities($_SESSION['username']); ?>';
+
            </script>
 
         <p class="headline_bars">Your Garden</p>

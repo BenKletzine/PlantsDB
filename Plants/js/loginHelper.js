@@ -11,5 +11,4 @@ function displayLoggedInStatus(username) {
         "<li><a href='../MyGarden/settings.php'>Settings</a></li>" +
         "<li><a href='../Includes/logout.php'>Logout</a></li>" +
     "</ul>";
-
 }

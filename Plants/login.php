@@ -36,7 +36,7 @@ if (login_check($db) == true) {
     <!-- == Content Section          == -->
     <!-- ============================== -->
 
-    <?php include('Layouts/contentStart.php');  ?>
+    <?php include('Layouts/contentStartIndex.php');  ?>
     <div id="loginForm">
         <h1>Login</h1>
         <form action="Includes/process_login.php" method="post" name="login_form">
